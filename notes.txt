@@ -1,0 +1,40 @@
+
+//   doneYet(userGuess);
+//   doneYet(userGuess);
+  //basically I want to create a funciton that checks if character matches guess, then I want to call that function for each character.
+
+  //function to call when guess is wrong
+    // function wrongGuess()   {
+        // lettersGuessed.push(" " + userGuess);
+        // numOfGuesses--;
+    
+  //or we could copy cargame, if guess=b current word [0] = userGuess or a or g or e or l
+   // so first we're adding userGuess to currentGuesses if not already there or in currentWord, and counting down guesses with g--.  THEN we are checking guess against currentWord.
+   
+//else if ( userGuess !== l for l== lettersGuessed.charAt(l))  {
+
+ 
+  
+// .join can connect the word string when game has been solved.
+
+// assign currentWord as an array. Display as an array of "_ " for [l] in currentWord if [l] is in lettersGuessed then return l otherwise "_ ". with getElementbyID
+//something like if letter does not appear in word
+//use str search, assigning new variable, if var is >-1, userGuess appears in currentWord.  So how do we return the filled in letter plus empty spaces?
+
+
+//if currentWord exists in currentGuesses then wins++ and move to next round.  If numOfGuesses.length>9 then also go to next word.  Next word is going to be a whole new page?  How do we keep # of wins throughout, with getElementbyID?
+
+//if None of the currentWord array are blanks then win++ and move on to next word
+
+// for (var i = 0; i < randomWord.length; i++) {
+//     var finish = true
+//     if (randomWord[i]===" _")  {
+//         finish = false;
+//     }
+
+//     else if (finish) {
+//         word 
+//         wins++;
+//     }
+
+
