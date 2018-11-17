@@ -4,20 +4,44 @@
 //equal to getElementbyID named in html body to be used later, could also use ID to change 
 //heading/clue for new word.  Like "if currentWord = toast put up h3 when currentWord=currentGuesses"
 var userGuess;
+var winSound = new Audio("assets/KittenMeow.mp3");
 var currentWord = [];
 var word;
 var wins = 0;
 var numOfGuesses = 10;
 var lettersGuessed = [];
-var wordList = ["bagel", "croissant", "muffin", "flour", "dough"];
+var wordList = ["bagel", "croissant", "muffin", "flour", "dough" , "cookie", "bread", "eclair"];
 var randomWord = wordList[Math.floor(Math.random() * wordList.length)];
-// CONVERSELY, we could just do each word manually, as in: if userguess = 'b', bakery[0]=userguess instead of _ and do this for each letter?
 
-function doneYet()  {
-  
-    return currentWord.join("") === randomWord;
+
+
+
+
+function newWord()  {
+    if (wins===7)   {
+       alert("YOU WON, WE'RE FRESH OUTTA WORDS!");
+       wins = 0;
+    }
     
-  }
+    else
+    alert(currentWord.toUpperCase() + "!  Bakery Cat Says: Mmmmm...'Purrfect!, click ok for the next word'");
+    randomWord = wordList[Math.floor(Math.random() * wordList.length)];
+    currentWord = [];
+    lettersGuessed = [];
+    numOfGuesses = 10;
+    for (var i = 0; i < randomWord.length; i++) {
+        currentWord.push("__");
+       // document.getElementById("word").innerHTML = currentWord; DOESNT WORK
+    }
+}
+// document.onclick = newWord;  Not working either to reset currentWord
+
+
+// function doneYet()  {
+  
+//     return currentWord.join("") === randomWord;
+    
+//   }
   
 
 
@@ -26,7 +50,7 @@ function doneYet()  {
 //function to generate new round of game
 
     for (var i=0; i<randomWord.length; i++)   {
-        currentWord.push(" _ "); 
+        currentWord.push("__ ");
         }
     
     function guessWord(userGuess)    {
@@ -38,30 +62,30 @@ function doneYet()  {
                 
             }
             
-    
-            // else if (randomWord[i]!==userGuess)   {
-                // currentWord[i] = " _";
-            // }
         }
-
-        lettersGuessed.push(userGuess);
-        
-        if (doneYet())  {
+            //decrement guesses left and add wrong guess to array of lettersGuessed
+        if (lettersGuessed.indexOf(userGuess.toUpperCase) < 0 && currentWord.indexOf(userGuess) < 0)   {
+            lettersGuessed.push(userGuess.toUpperCase())
+            numOfGuesses--;
+        }
+            //check if word is solved yet
+        if (currentWord.join("") === randomWord)  {
            currentWord = currentWord.join("");
             wins++;
-        }
-
-        else (numOfGuesses--)
+            winSound.play();
             
-        
+            
+        }
+            //if word is solved choose new word
+        if (currentWord === randomWord)  {
+            newWord();}
+            
+        //if user ran out of guesses game ends
         if (numOfGuesses===0)   {
-            alert("You Lose!");
+            alert("You Lose! Please reload the page to try again");
         }
 
-         }     // currentWord[i] = " _";
-            // return currentWord;
-    
-            // if (randomWord[i]!==userGuess)  {
+         } 
                 
 // This function is run whenever the user presses a key.
  document.onkeyup = function(event)  { 
@@ -69,14 +93,13 @@ function doneYet()  {
 
  //get userGuess and assign variable
   var userGuess = event.key;
- 
+  
   guessWord(userGuess);
+  word = currentWord.join(" ");
 
 document.getElementById("wins").innerHTML = wins;
-document.getElementById("word").innerHTML = currentWord;
+document.getElementById("word").innerHTML = word;
 document.getElementById("guesses").innerHTML = lettersGuessed;
 document.getElementById("p2").innerHTML = numOfGuesses;
-
-
 
 };
