@@ -10,7 +10,7 @@ var word;
 var wins = 0;
 var numOfGuesses = 10;
 var lettersGuessed = [];
-var wordList = ["bagel", "croissant", "muffin", "flour", "dough" , "cookie", "bread", "eclair"];
+var wordList = ["bagel", "croissant", "muffin", "flour", "dough" , "cookie", "bread", "eclair", "cupcake"];
 var randomWord = wordList[Math.floor(Math.random() * wordList.length)];
 
 
@@ -18,20 +18,20 @@ var randomWord = wordList[Math.floor(Math.random() * wordList.length)];
 
 
 function newWord()  {
-    if (wins===7)   {
+    if (wins===6)   {
        alert("YOU WON, WE'RE FRESH OUTTA WORDS!");
        wins = 0;
     }
     
     else
-    alert(currentWord.toUpperCase() + "!  Bakery Cat Says: Mmmmm...'Purrfect!, click ok for the next word'");
+    alert("Bakery Cat Says: " + currentWord.toUpperCase() + "!  'Purrfect!  Press enter for the next word'");
+    document.getElementById("won").innerHTML = currentWord.toUpperCase();
     randomWord = wordList[Math.floor(Math.random() * wordList.length)];
     currentWord = [];
     lettersGuessed = [];
     numOfGuesses = 10;
     for (var i = 0; i < randomWord.length; i++) {
         currentWord.push("__");
-       // document.getElementById("word").innerHTML = currentWord; DOESNT WORK
     }
 }
 // document.onclick = newWord;  Not working either to reset currentWord
@@ -42,17 +42,12 @@ function newWord()  {
 //     return currentWord.join("") === randomWord;
     
 //   }
-  
-
-
-
 
 //function to generate new round of game
-
     for (var i=0; i<randomWord.length; i++)   {
         currentWord.push("__ ");
         }
-    
+
     function guessWord(userGuess)    {
         for (var i = 0; i < randomWord.length; i++)   {
             
@@ -64,7 +59,7 @@ function newWord()  {
             
         }
             //decrement guesses left and add wrong guess to array of lettersGuessed
-        if (lettersGuessed.indexOf(userGuess.toUpperCase) < 0 && currentWord.indexOf(userGuess) < 0)   {
+        if (lettersGuessed.indexOf(userGuess.toUpperCase()) < 0 && currentWord.indexOf(userGuess) < 0)   {
             lettersGuessed.push(userGuess.toUpperCase())
             numOfGuesses--;
         }
