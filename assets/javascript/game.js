@@ -57,7 +57,9 @@ function newWord()  {
                 
             }
             
-        }
+        }   
+        //can add function that uses filter method then call that function when word is solved to remove it form the randomWord array.
+        // can simplify by using include method
             //decrement guesses left and add wrong guess to array of lettersGuessed
         if (lettersGuessed.indexOf(userGuess.toUpperCase()) < 0 && currentWord.indexOf(userGuess) < 0)   {
             lettersGuessed.push(userGuess.toUpperCase())

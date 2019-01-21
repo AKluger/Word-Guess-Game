@@ -1,0 +1,33 @@
+#head   {
+    background-color: #fdf2e8;
+}
+
+#HBC    {
+    position: fixed;
+  top: 2%;
+  left: 2%;
+  height: 60px;
+}
+
+#foot   {
+    color: black;
+    font-size: 12px;
+}
+
+#game-container {
+    background-color: #e7c18e; 
+    border:5px solid #d8633e"
+}
+
+#subtitle   {
+    font-family: 'Pacifico', cursive; 
+    color: #d8633e; 
+    text-decoration: underline;
+}
+
+#cat    {
+   position:fixed; 
+   top:0; 
+   right:0; 
+   height: 240px;
+}
